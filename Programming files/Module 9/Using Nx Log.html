@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>NX Log files</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>NX Log files</h1>
+
+    <pre>
+       <b>1. Locate the Log Files:</b> 
+
+        The log files are typically stored in the installation directory of Siemens NX. Look for a folder named "log" or "logs."
+        Common log file names include NXsession.log or similar. The specific name may vary based on the version and
+        configuration.
+
+        <b>2. Enable Logging:</b>
+
+        If logging is not already enabled, you may need to enable it. This is often done through the NXOpen API or by setting
+        environment variables. Check the NXOpen documentation for details on how to enable logging.
+
+        <b>3. Review Log Content:</b>
+
+        Open the log file in a text editor and review its content. Look for error messages, warnings, or any information that
+        might indicate the source of the problem.
+
+        Pay attention to timestamps and correlate them with your NXOpen API actions. This can help pinpoint when the issue
+        occurred.
+
+        <b>4. Identify Error Messages:</b>
+
+        Look for error messages or stack traces that provide information about the nature of the problem. Error messages often
+        include details about the specific API calls or operations that encountered issues.
+
+        <b>5. Check for Exception Details:</b>
+
+        If an exception occurred, review the details of the exception. This includes the type of exception, error codes, and any
+        additional information provided by the log.
+
+        <b>6. Validate Input Parameters:</b>
+
+        Verify that the input parameters provided to your NXOpen API calls are correct. Check for typos, incorrect data types,
+        or any other issues with the input.
+
+        <b>7. Consult NXOpen Documentation:</b>
+
+        Refer to the NXOpen documentation for the version you are using. Look for troubleshooting guides, error code
+        explanations, and any specific information related to the issues you're encountering.
+
+        <b>8. Search Online Forums and Communities:</b>
+
+        Search online forums or communities related to Siemens NX and NXOpen. Others may have faced similar issues, and there
+        might be discussions or solutions available.
+
+        <b>9. Update NXOpen and Siemens NX:</b>
+        
+        Ensure that you are using the latest version of NXOpen that is compatible with your Siemens NX installation. Check for
+        any updates or patches that address known issues.
+
+        <b>10. Contact Siemens Support:</b>
+
+        If you are unable to resolve the issue, consider reaching out to Siemens Support. Provide them with relevant details,
+        including log files, error messages, and steps to reproduce the problem.
+
+    </pre>
+
+    <h3>Log File Location = Menu -->Help-->Log File</h3>
+</body>
+</html>

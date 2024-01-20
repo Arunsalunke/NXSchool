@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>String</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>String</h1>
+
+    <pre>
+        In C#, strings are sequences of characters represented by the string data type. Strings are widely used for working with
+        text and are part of the System.String class in the .NET framework. Here are some key aspects of working with strings in
+        C#:
+    </pre>
+
+    <h3>1. String Declaration:</h3>
+    <br>
+    <pre>
+        string myString = "Hello, World!";
+    </pre>
+
+    <h3>2. String Concatenation:</h3>
+    <br>
+    <pre>
+        You can concatenate strings using the + operator:
+
+        <b style="color: blue;">string</b> firstName = "John";
+        <b style="color: blue;">string </b>lastName = "Doe";
+        <b style="color: blue;">string</b> fullName = firstName + " " + lastName;
+
+        Alternatively, you can use the String.Concat() method or string interpolation:
+        
+        <b style="color: blue;">string</b> fullName = string.Concat(firstName, " ", lastName);
+        // or
+        <b style="color: blue;">string</b> fullName = $"{firstName} {lastName}";
+    </pre>
+
+    <h3>3. String Length:</h3>
+    <br>
+    <pre>
+        The Length property is used to get the number of characters in a string:
+
+        <b style="color: blue;">string</b> myString = "Hello, World!";
+        <b style="color: blue;">int</b> length = myString.Length; // length is 13
+    </pre>
+
+    <h3>4. Accessing Characters:</h3>
+    <br>
+    <pre>
+        You can access individual characters in a string using indexing:
+        <b style="color: blue;">char</b> firstChar = myString[0]; // firstChar is 'H'
+    </pre>
+
+    <h3>5. String Comparison:</h3>
+    <br>
+    <pre>
+        Use methods like Equals() or Compare() for string comparison:
+
+        <b style="color: blue;">string </b>str1 = "hello";
+        <b style="color: blue;">string</b> str2 = "HELLO";
+        <b style="color: blue;">bool </b>areEqual = <b style="color: rgb(255, 153, 0);">str1.Equals</b>(str2, StringComparison.OrdinalIgnoreCase);
+    </pre>
+
+    <h3>6. Substring:</h3>
+    <br>
+    <pre>
+        Extract a portion of a string using Substring():
+        
+        <b style="color: blue;">string </b>original = "Hello, World!";
+        <b style="color: blue;">string </b>substring = <b style="color: rgb(255, 153, 0);">original.Substring</b>(0, 5); // substring is "Hello"
+    </pre>
+
+
+    <h3>7. String Manipulation:</h3>
+    <br>
+    <pre>
+        Various methods are available for manipulating strings, such as ToLower(), ToUpper(), Trim(), Replace(), Split(), etc.
+
+        <b style="color: blue;">string </b>original = " Trim Me ";
+        <b style="color: blue;">string</b> trimmed = <b style="color: rgb(255, 153, 0);">original.Trim();</b> // trimmed is "Trim Me"
+    </pre>
+
+    <h3>8. String Formatting:</h3>
+    <br>
+    <pre>
+        You can format strings using the String.Format() method or string interpolation:
+
+        <b style="color: blue;">int</b> age = 25;
+        <b style="color: blue;">string </b>message = <b style="color: rgb(255, 153, 0);">String.Format</b>("My age is {0}.", age);
+        // or
+        <b style="color: blue;">string</b> message = $"My age is {age}.";
+    </pre>
+
+    <h3>9. String Comparison Operators:</h3>
+    <br>
+    <pre>
+        You can use == and != to compare strings:
+        <b style="color: blue;">strin</b>g str1 = "hello";
+        <b style="color: blue;">string</b> str2 = "world";
+        <b style="color: blue;">bool</b> areEqual = (str1 == str2); // false
+    </pre>
+    <h3>10. Immutable Nature:</h3>
+
+    <pre>  
+        Strings in C# are immutable, meaning that once a string object is created, its value cannot be changed. Any operation
+        that seems to modify a string actually creates a new string.
+        
+        These are just some of the basics of working with strings in C#. The System.String class provides a rich set of methods
+        for manipulating and working with text data. Additionally, C# provides the StringBuilder class for more efficient string
+        manipulation when dealing with large amounts of text.
+    </pre>
+</body>
+</html>

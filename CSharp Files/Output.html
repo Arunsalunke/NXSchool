@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Output</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow:scroll;
+        height: 200px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Console</h1>
+    <pre>
+        In C#, the Console class is commonly used to interact with the console and display output. Here are some examples of how
+        you can output information to the console:
+        
+       <h3> 1. Printing Text:</h3>
+       
+       <div class="Block">
+        Console.WriteLine("Hello, World!");   
+       </div>
+       This line of code prints "Hello, World!" followed by a newline to the console.
+      
+        
+        <h3>2. Printing Variables:</h3>
+       
+        <div class="Block">
+            string name = "John";
+            int age = 25;
+            Console.WriteLine($"Name: {name}, Age: {age}");
+        </div>
+        This uses string interpolation to include variable values within a string.
+        
+        <h3>3. Formatting Output:</h3>
+    <diV class="Block">
+        int number = 42;
+        Console.WriteLine("The answer to the ultimate question is: {0}", number);
+    </diV> 
+        This uses placeholder {0} to format the output with the value of number.
+        
+       <h3>4. Reading Input:</h3> 
+       <diV class="Block">
+        Console.Write("Enter your name: ");
+        string userName = Console.ReadLine();
+        Console.WriteLine($"Hello, {userName}!");
+        Console.ReadLine() reads a line of text from the console.
+       </diV>
+        
+        
+       <h3>5. Output Without Newline:</h3> 
+      
+       <diV class="Block">
+        Console.Write("This ");
+        Console.Write("is ");
+        Console.Write("on ");
+        Console.Write("the ");
+        Console.Write("same ");
+        Console.Write("line.");
+       </diV>
+        Using Console.Write to print on the same line without adding a newline character.
+        
+
+        <h3>6. Formatted Numbers:</h3>
+       
+        <div class="Block">
+            double price = 42.99;
+            Console.WriteLine($"Price: {price:C2}");
+        </div>
+        This formats the price as currency with two decimal places.
+        
+       <h3>7. Custom Formatting:</h3> 
+        <div class="Block">
+            DateTime currentDate = DateTime.Now;
+            Console.WriteLine($"Current Date: {currentDate:yyyy-MM-dd HH:mm:ss}");
+        </div>
+        
+        Custom formatting for displaying the current date and time.
+        
+        These are just a few examples of how you can use the Console class to output information in C#. The key is to use
+        Console.WriteLine for adding a newline after the output and Console.Write for outputting without a newline.
+    </pre>
+
+</body>
+</html>

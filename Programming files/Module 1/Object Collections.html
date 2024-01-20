@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Object Collection</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+    .nextprev a.w3-right, .nextprev a.w3-left 
+    {
+    background-color: #04AA6D;
+    color: #ffffff;
+    border-color: #04AA6D;
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Object Collections</h1>
+
+    <br>
+
+    <pre>
+        In Siemens NX and its programming interface NX Open, "Object Collections" represent groups or containers that hold and
+        manage multiple objects of a similar type or category. These collections provide a convenient way to gather, organize,
+        and access related objects within the NX environment.
+
+        Object Collections serve various purposes, offering functionalities that allow users to:
+
+        1. Group Objects: Objects with similar characteristics or belonging to the same category can be grouped together within
+        a collection. For example, a collection could contain all the features of a part, all the sketches within an assembly,
+        or all the edges of a specific face.
+
+        2. Organize and Access: Collections provide a means to organize and manage related objects, making it easier to access
+        and manipulate them collectively. This simplifies operations on multiple objects simultaneously.
+
+        3. Iterate and Traverse: Object Collections often support iteration, allowing users to traverse through the contained
+        objects, retrieve information, and perform operations on each object in the collection in a systematic manner.
+        4. Selection and Filtering: They can help in selecting specific subsets of objects based on certain criteria or
+        properties. For instance, a collection can be used to filter out all the circular edges or specific types of features
+        from a part.
+
+        Examples of Object Collections in NX Open might include collections of faces, edges, sketches, features, components,
+        dimensions, or other entities that are commonly accessed and managed together.
+
+        Using Object Collections in NX Open API offers a more efficient and organized way to handle multiple objects, enabling
+        users to perform operations on numerous related objects at once, iterate through them, and apply actions based on
+        specific criteria, contributing to more streamlined and effective design automation and manipulation processes within
+        Siemens NX.
+
+    </pre>
+
+    <br>
+
+    <h2>Example</h2>
+
+    <br>
+
+    <div class="Block">
+        <pre>
+            public static void Main(string[] args)
+            {
+                Session thesession = Session.GetSession();
+                Part Workpart = thesession.Parts.Work;
+                ListingWindow lw = thesession.ListingWindow;
+                DatumCollections myPart = Workpart.Datums;
+                foreach (Datum item in myPart)
+                {
+                    lw.WriteLine(item.JournalIdentifier);             
+                }      
+            }
+            
+            public static int GetUnloadOption(string args)
+            {
+                return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+            
+            }
+        </pre>
+    </div>
+
+    <br>
+    <a class="w3-right w3-btn" href="Objects and Tags.html">❮ Previous</a>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Drawing</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Drawings</h1>
+
+    <pre>
+        Key aspects of drawing in NX OPEN include:
+        
+        <b>Views:</b> You can generate orthographic or isometric views of the 3D model to show different perspectives of the object.
+        These views help convey the shape, size, and features of the design.
+        
+        <b>Dimensions:</b> UG NX allows you to add accurate dimensions to the drawing, specifying distances, angles, and other
+        measurements. This information is crucial for manufacturing and quality control.
+        
+        <b>Annotations:</b> You can add annotations, notes, and labels to provide additional information or instructions. This helps in
+        clarifying specific details or requirements.
+        
+        <b>GD&T (Geometric Dimensioning and Tolerancing):</b> UG NX supports GD&T, allowing you to define and communicate tolerances
+        for various geometric features. This is essential for ensuring that the manufactured part meets the intended design
+        specifications.
+        
+        <b>Bill of Materials (BOM):</b> UG NX enables the creation of a Bill of Materials, listing the components and quantities
+        required for assembly. This information is vital for manufacturing and procurement processes.
+        
+    </pre>
+
+    <pre>
+        A drawing is represented by a collection of <b>NXOpen.Drawings.DrawSheet</b> objects in NX Open. The set of all DrawingSheet
+        objects in the work part (or any part file) is a DrawingSheetCollection object, which you can get by using the
+        workPart.DrawingSheets property.
+
+        Each sheet has a SheetDraftingViewCollection object, which is important because you use it to work with the views on the
+        sheet (to create and delete views, for example). You can get this object by using the SheetDraftingViews property of the
+        sheet. 
+    </pre>
+
+    <br>
+
+    <h2>Sample Code</h2>
+
+    <div class="Block">
+
+        <pre>
+            using NXOpen;
+
+            namespace Drawing
+
+            {
+                public class Drawing
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+            
+                        NXOpen.Drawings.DrawingSheet <b style="color: red;">DwgSheet</b> = workPart.DrawingSheets.InsertSheet("S01", NXOpen.Drawings.DrawingSheet.StandardSheetSize.A3, 1, 1, NXOpen.Drawings.DrawingSheet.ProjectionAngleType.ThirdAngle);
+                        <b style="color: red;">DwgSheet</b>.Open();
+            
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+
+        </pre>
+    </div>
+
+</body>
+</html>

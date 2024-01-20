@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Type Casting</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 100px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Type Casting</h1>
+    <pre>
+        Type casting in C# is the process of converting a variable from one data type to another. C# supports two main types of
+        casting: implicit casting (also known as widening conversion) and explicit casting (also known as narrowing conversion).
+        The choice between implicit and explicit casting depends on whether the conversion is considered safe or might result in
+        data loss or unexpected behavior.
+    </pre>
+
+    <h2>1. Implicit Casting (Widening Conversion):</h2>
+
+    <pre>
+        Type casting in C# is the process of converting a variable from one data type to another. C# supports two main types of
+        casting: implicit casting (also known as widening conversion) and explicit casting (also known as narrowing conversion).
+        The choice between implicit and explicit casting depends on whether the conversion is considered safe or might result in
+        data loss or unexpected behavior.
+        
+        Implicit casting is performed automatically by the compiler when there is no risk of data loss. For example, converting an int to a long.
+    </pre>
+
+    <div class="Block">
+
+        <pre>
+            int intValue = 42;
+            long longValue = intValue; // Implicit casting from int to long
+        </pre>
+    </div>
+
+    <pre>
+        In this case, the compiler allows the conversion from int to long without requiring any explicit casting syntax.
+    </pre>
+
+
+    <h2>2. Explicit Casting (Narrowing Conversion):</h2>
+
+    <pre>
+        Explicit casting is required when there is a possibility of data loss, and the programmer needs to explicitly indicate
+        the conversion. This is done using the cast operator. For example, converting a double to an int:
+    </pre>
+
+    <div class="Block">
+        <pre>
+            double doubleValue = 123.45;
+            int intValue = (int)doubleValue; // Explicit casting from double to int
+        </pre>
+    </div>
+
+    <pre>
+        Here, the (int) is used to explicitly cast the doubleValue to an int. Note that this may result in the loss of the
+        fractional part of the number.
+    </pre>
+
+    <h2>Checking for Type Compatibility:</h2>
+    <pre>
+        Before performing explicit casting, it's a good practice to check whether the conversion is possible to avoid runtime
+        errors. This can be done using the is keyword and the as operator:
+    </pre>
+
+    <div style="height: 300; background-color: lemonchiffon; width: 1000px; display: flex; overflow: scroll;">
+        <pre>
+            object someObject = "Hello";
+            if (someObject is string)
+            {
+            string stringValue = (string)someObject;
+            // Do something with stringValue
+            }
+            else
+            {
+            // Handle the case where the object is not of the expected type
+            }
+        </pre>
+    </div>
+
+    <pre>
+        It's important to note that explicit casting should be used with caution, as it may lead to runtime errors if the types
+        are not compatible. Always ensure that the conversion is valid based on the context of your program.
+    </pre>
+</body>
+</html>

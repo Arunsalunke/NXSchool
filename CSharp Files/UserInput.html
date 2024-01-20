@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>User Input</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>User Input</h1>
+
+    <pre>
+        In C#, you can read user input from the console using the Console.ReadLine() method. This method reads a line of
+        characters from the standard input (console) and returns it as a string.
+        
+        Here's a simple example of reading user input in C#:
+    </pre>
+
+    <div class="Block">
+        <pre>
+            using System;
+            
+            class Program
+            {
+                static void Main()
+
+                {
+                    Console.Write("Enter your name: ");
+                    string userName = Console.ReadLine();
+                    
+                    Console.WriteLine($"Hello, {userName}!");
+                    
+                    // Wait for user to press Enter before closing the console window
+                    Console.ReadLine();
+                   
+                }      
+            }
+
+        </pre>
+    </div>
+
+    <pre>
+        In this example:
+        
+        The <b>Console.Write("Enter your name: ");</b> statement prompts the user to enter their name.
+
+        <b>Console.ReadLine()</b> reads the user's input as a string and assigns it to the userName variable.
+
+        The program then prints a greeting using the entered name with <b>Console.WriteLine($"Hello, {userName}!");</b>.
+
+        <b>Console.ReadLine();</b> is used to wait for the user to press Enter before closing the console window.
+
+        It's important to note that <b>Console.ReadLine()</b> returns the user input as a string. If you need to process the input as a
+        different data type (e.g., convert it to an integer or a double), you'll need to perform type conversion using methods
+        like <b>int.Parse() or double.Parse().</b>
+        
+    </pre>
+
+    <pre>Here's an example that reads an integer from the user:</pre>
+    <div class="Block">
+        <pre>
+            using System;
+
+            class Program
+
+            {
+                static void Main()
+                {
+                    Console.Write("Enter your age: ");
+                    string ageInput = Console.ReadLine();
+            
+                    // Convert the input to an integer
+                    if (int.TryParse(ageInput, out int age))
+                    {
+                        Console.WriteLine($"You entered: {age}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid integer.");
+                    }
+            
+                    Console.ReadLine(); // Wait for user to press Enter
+                }
+            }
+            
+
+
+        </pre>
+    </div>
+
+    <pre>
+        In this example, <b>int.TryParse()</b> is used to attempt parsing the user's input as an integer. If the conversion is
+        successful, it prints the entered age; otherwise, it displays an error message.
+    </pre>
+</body>
+</html>

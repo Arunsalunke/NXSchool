@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Selection Dialogs</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 700px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Selection Dialogs</h1>
+
+    <pre>
+        In order to perform some operation on an NX object, the user will often have to select it, first. So, we need some way
+        to support selection in our NX Open programs. You can use either a free-standing Selection object or a SelectObject
+        block on a block-based dialog. The two approaches have much in common, and this chapter describes both of them.
+    </pre>
+
+    <pre>
+        One way to support selection in NX Open is to use the tools in the <b style="color: green;">NXOpen.Selection</b> class. The general process is:
+
+         You get the Selection object from the <b style="color: green;">NXOpen.UI</b>
+         You define some variables for the selection parameters, if necessary
+         You call one of the selection methods on it, so that it can gather information from the user
+         A Selection.Response is returned to you, as well as the selected objects if the user did not cancel the selection
+        Here is a short snippet of code illustrating this process. 
+
+    </pre>
+
+    <h2>Sample Code</h2>
+
+    <div class="Block">
+
+        <pre>
+            using NXOpen;
+
+            namespace Selection_Dialogs
+
+            {
+                public class SelectionDialogs
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+            
+                        UI theUI = UI.GetUI();
+            
+                        string Mesg = "Select Body";
+                        string Title = "Body Selection";
+                        bool includeFeature = false;
+                        bool keepHighligh = false;
+                        TaggedObject SelectedObject;
+                        Point3d point = new Point3d();
+            
+                        Selection.Response Resp =  theUI.SelectionManager.SelectTaggedObject(Mesg, Title, Selection.SelectionScope.AnyInAssembly, false, false, out SelectedObject, out point);
+            
+                        if (Resp != Selection.Response.Back || Resp != Selection.Response.Cancel) ;
+                        {
+                            if (SelectedObject is NXOpen.Body)
+                            {
+                                Body selectedBody = (NXOpen.Body)SelectedObject; <b style="color: green;">// Convert selected object to Body</b>
+                                selectedBody.Color = 12;
+                                selectedBody.RedisplayObject();
+                            }
+                            else
+                                theUI.NXMessageBox.Show("LogFile", NXMessageBox.DialogType.Information, "Select body");
+                        }
+                           
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+
+       
+        </pre>
+
+    </div>
+
+    <pre>When the code shown above is executed, a small dialog appears giving the user the opportunity to select a body.</pre>
+    <br>
+    <img src="../Images/Selection Dialague.png">
+
+    <br>
+    
+    <pre>
+        If the user selects a body and clicks OK, the selected body will be returned to your code in the selectedObject
+        variable, so you can do whatever you want with it. In the example above, we chose to change the color of the body.
+    </pre>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Selecting Faces</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Curve and Edge selection</h1>
+
+    <br>
+
+    <h2>Example of code to select Edge and Curve</h2>
+
+    <pre>
+        using NXOpen;
+
+        namespace CurvesAndEdges
+        {
+            public class Curves
+            {
+                public static void Main(string[] args)
+                {
+                    Session theSession = Session.GetSession();
+                    Part workPart = theSession.Parts.Work;
+        
+                    UI theUI = UI.GetUI();
+        
+                    string Mesg = "Select Body";
+                    string Title = "Body Selection";
+                    bool includeFeature = false;
+                    bool keepHighligh = false;
+                    TaggedObject SelectedObject;
+                    Point3d point = new Point3d();
+        
+                    <b style="color: blue;">Selection.SelectionType[] SelectFaces = { Selection.SelectionType.Curves,Selection.SelectionType.Edges };</b>
+        
+                    Selection.Response Resp = theUI.SelectionManager.SelectTaggedObject(Mesg, Title, Selection.SelectionScope.AnyInAssembly, keepHighligh, SelectFaces, out SelectedObject, out point);
+        
+                    if (Resp != Selection.Response.Back || Resp != Selection.Response.Cancel) ;
+                    {
+                        if (SelectedObject is NXOpen.Curve)
+                        {
+        
+                            NXOpen.Curve selectedCurve = (NXOpen.Curve)SelectedObject;
+                            double crvLength = selectedCurve.GetLength(); <b style="color: green;">//Get curve length</b>
+        
+                        }
+                        else if (SelectedObject is NXOpen.Edge)
+                        {
+                            NXOpen.Edge selectedEdge = (NXOpen.Edge)SelectedObject;
+                            NXOpen.Edge.EdgeType type = selectedEdge.SolidEdgeType; <b style="color: green;">// Get edge type</b>
+                        }
+                        else
+                            theUI.NXMessageBox.Show("Error", NXMessageBox.DialogType.Information, "Selected object is not an edge");
+                    }
+        
+                }
+        
+                public static int GetUnloadOption(string args)
+                {
+                    return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                }
+            }
+        }
+        
+
+    </pre>
+</body>
+</html>

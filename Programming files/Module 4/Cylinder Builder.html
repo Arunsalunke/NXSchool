@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Cylinder Builder</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+
+    <br>
+
+    <h1>Cylinder Builder</h1>
+    <br>
+    <div class="Block">
+        <pre>
+            using NXOpen;
+
+            namespace CylinderBuilder
+
+            {
+                public class CylindricalBuilder
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+            
+                        NXOpen.Features.Cylinder newCylinder = null;
+                        NXOpen.Features.CylinderBuilder builder;
+                        builder=workPart.Features.CreateCylinderBuilder(newCylinder);
+                        builder.Type = NXOpen.Features.CylinderBuilder.Types.AxisDiameterAndHeight;
+            
+                        builder.Direction = new Vector3d(1, 0, 0);
+                        builder.Origin = new Point3d(0, 0, 0);
+                        builder.Diameter.Value = 100;
+                        builder.Height.Value = 50;
+                        builder.BooleanOption.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create;
+            
+                        NXOpen.NXObject Cylinder = builder.Commit();
+                        builder.Destroy();
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return 1;
+                    }
+
+                }
+
+            }
+
+        </pre>
+    </div>
+
+    <br>
+    <img src="../Images/CylindricalBuilder.png">
+</body>
+
+</html>

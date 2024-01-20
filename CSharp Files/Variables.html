@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Variable</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        
+        background-color:darksalmon;
+        display:inline-flex;
+        
+    }
+
+    h3
+    {
+        color:blue;
+    }
+
+
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Variables</h1>
+
+    <pre>
+        In C#, variables are used to store and manipulate data in a program. Each variable has a specific data type that
+        determines the kind of data it can hold. Here's an overview of variables in C#:
+        
+        <h3>1.Variable Declaration</h3>
+        To declare a variable, you specify its data type followed by a name. For example:
+     
+       <div class="Block">
+        int age; // Declaring an integer variable
+        double salary; // Declaring a double-precision floating-point variable
+        string name; // Declaring a string variable
+        bool isStudent; // Declaring a boolean variable
+       </div>
+     
+        
+        <h3>2.Variable Initialization:</h3>
+        After declaring a variable, you can initialize it with a value using the assignment operator (`=`):
+      
+       <div class="Block">
+        age = 25; // Initializing the 'age' variable
+        salary = 50000.50; // Initializing the 'salary' variable
+        name = "John Doe"; // Initializing the 'name' variable
+        isStudent = true; // Initializing the 'isStudent' variable
+       </div>
+        
+        <h3>3.Combining Declaration and Initialization:</h3>
+        You can combine the declaration and initialization in a single line:
+      
+        <div class="Block">
+        int age = 25; // Combining declaration and initialization
+        double salary = 50000.50; // Combining declaration and initialization
+        string name = "John Doe"; // Combining declaration and initialization
+        bool isStudent = true; // Combining declaration and initialization
+        </div>
+     
+        
+        <h3>4.Variable Naming Rules:</h3>
+       <div class="Block">
+        - Variable names must start with a letter or an underscore.
+        - Subsequent characters can be letters, digits, or underscores.
+        - C# is case-sensitive, so `myVariable` and `MyVariable` are different variables.
+        - Avoid using reserved keywords (e.g., `int`, `string`) as variable names.
+       </div>
+        
+        <h3>5.Implicit and Explicit Typing:</h3>
+        You can use implicit typing (`var` keyword) when the compiler can infer the type:
+       
+        <div class="Block">
+            var count = 10; // Implicitly typed as an integer
+            var price = 29.99; // Implicitly typed as a double
+        </div>
+   
+        
+        <h3>6.Constants</h3>
+        Constants are variables whose values cannot be changed once set. They are declared using the `const` keyword:
+      
+       <div class="Block"> const double Pi = 3.14159;</div>
+       
+        
+        <h3>7.Dynamic Typing:</h3>
+        C# also supports dynamic typing using the `dynamic` keyword. The type is resolved at runtime:
+     
+        <div class="Block"></div>
+       
+        
+        <h3>8.Nullable Types:</h3>
+        Nullable types allow variables to have a value of `null` in addition to their regular data type:
+      
+        <div class="Block">
+            int? nullableInt = null; // Nullable integer
+            double? nullableDouble = 3.14; // Nullable double
+        </div>
+     
+        <h3>9.Scope of Variables:</h3>
+        Variables have a scope, and they can be local to a block, a method, or be members of a class.
+        
+        <h3>10.Value Types vs. Reference Types:</h3>
+        Value types store their data directly, while reference types store a reference to the memory location where the data is
+        stored.
+        
+        Understanding and effectively using variables is fundamental to programming in C#. They allow you to store and
+        manipulate data, making your programs dynamic and responsive to different inputs.
+    </pre>
+
+</body>
+</html>

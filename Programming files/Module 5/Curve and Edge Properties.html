@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Curve and Edge Properties</title>
+
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Curve and Edge Properties</h1>
+    
+    <br>
+    <pre>
+        In this section, we describe techniques for getting information about curves and edges. Specifically, we discuss how we
+        can obtain position and tangent information, shape parameters like radius, and topological properties.
+    
+  </pre>
+
+  <h2>Evaluators</h2>
+
+  <pre>
+    Some of the most useful methods when working with curves or edges are the so-called “evaluator” functions. At a given
+    location on a curve (defined by a parameter value t), we can ask for a variety of different values, such as the position
+    of the point, or the tangent or curvature of the curve. The evaluator functions are provided by the NXOpen.UF.UFEval
+    class. The most important functions are Evaluate and EvaluateUnitVectors
+  </pre>
+
+  <div class="Block">
+
+  </div>
+
+  <br>
+
+  <h2>Edge Topology Properties</h2>
+
+  <pre>
+    The main difference between an edge and a curve, of course, is that an <b>edge is part of a body, whereas a curve is not.</b>
+    Because of this, an edge has “topological” properties that a curve does not have, which describe how the edge is
+    connected to other items (faces, edges, vertices) within the body. Basic topology enquiries are quite simple: if myEdge
+    is of type NXOpen.Edge, then you can use the myEdge.GetFaces function to find out which faces it belongs to, and the
+    myEdge.GetBody function to find out which body it belongs to.
+  </pre>
+
+</body>
+</html>

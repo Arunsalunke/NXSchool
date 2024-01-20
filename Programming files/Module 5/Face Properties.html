@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Face Properties</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Face Properties</h1>
+
+    <pre>
+        Like edges, faces have evaluator functions, topological properties, and geometric properties.
+    </pre>
+
+    <h2>Face Topology Properties</h2>
+
+    <pre>
+        Like an edge, a face has “topological” properties that describe its relationship to other objects in its body. If myFace
+        is an NXOpen.Face object, then myFace.GetBody gives you the body that the face lies on, and myFace.GetEdges returns its
+        array of edges..
+    </pre>
+
+    <div class="Block">
+
+    </div>
+
+    <br>
+
+    <h2>Face Geometry Properties</h2>
+
+    <pre>
+        To get information about the geometry of a face, you use the NXOpen.UF.UFModl.AskFaceData function. For example, the
+        following code gets information about a face myFace:
+    </pre>
+
+    <div class="Block">
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Create Expression</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Create Expression</h1>
+
+    <pre>
+        Functions for creating expressions are provided in the ExpressionCollection class, as follows:
+    </pre>
+
+    <img src="../Images/Create Expression.png">
+
+    <pre>
+        
+     When creating expressions of a specified type, the type is indicated by a string, which can be one of “Number”,
+    “String”, “Boolean”, “Integer”, “Point” or “Vector”. The following code shows how these functions are used:
+
+</pre>
+
+<br>
+
+<h3>Example Code</h3>
+<br>
+<div class="Block">
+
+    <pre>
+        using NXOpen;
+
+        namespace Create_Expression
+
+        {
+            public class CreateExpression
+            {
+                public static void Main(string[] args)
+                {
+                    Session theSession = Session.GetSession();
+                    Part workPart = theSession.Parts.Work;
+        
+                    NXOpen.Unit mmUnit = workPart.UnitCollection.GetBase("Length");
+                    NXOpen.Unit cmUnit = workPart.UnitCollection.FindObject("CentiMeter");
+        
+                   <b style="color: green;">//Get the ExpressionCollection of the work part</b> 
+        
+                    NXOpen.ExpressionCollection ExpCollection = workPart.Expressions;
+        
+        
+                    <b style="color: green;">//Create Three expressions</b> 
+                    Expression exp1 = ExpCollection.Create("X=12");
+                    Expression exp2 = ExpCollection.CreateExpression("Integer", "Length=12");
+                    Expression exp3 = ExpCollection.CreateWithUnits("Width=13", cmUnit);
+        
+                }
+        
+                public static int GetUnloadOption(string args)
+                {
+                    return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                }
+            }
+        }
+
+    </pre>
+</div>
+
+</body>
+</html>

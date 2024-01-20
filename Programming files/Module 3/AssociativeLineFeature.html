@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Associative Line Feature</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h3>Associative Line</h3>
+
+    <pre>
+
+        In NXOpen, the API offers capabilities to work with Associative Line Features. The associativity in NXOpen is more about
+        the relationships between different geometric entities rather than a specific feature type named "Associative Line." The
+        associativity is maintained through geometric constraints and relationships between various sketch elements, such as
+        lines, arcs, points, and curves, enabling the changes in one entity to affect the associated entities.
+
+        Using NXOpen, you can create and work with these associative relationships in a similar manner to how you'd create them
+        interactively within Siemens NX.
+
+        Here's a simplified example of how you might create a sketch with lines and associate them using constraints:
+
+    </pre>
+    
+
+    <br>
+
+    <h3>Example Code</h3>
+
+    <br>
+
+    <div class="Block">
+        <pre>
+
+                using NXOpen;
+
+                namespace Associative_Line
+
+                {
+                    public class Class1
+                    {
+                        public static void Main(string[] args)
+                        {
+                
+                            Session theSession = Session.GetSession();
+                            Part workpart = theSession.Parts.Work;
+                
+                           <h4 style="color: green; font-weight: bold;"> // Create Builder</h4>
+
+                            NXOpen.Features.AssociativeLine newLine = null;
+                            NXOpen.Features.AssociativeLineBuilder builder = workpart.BaseFeatures.CreateAssociativeLineBuilder(newLine);
+                            builder.Associative = true;
+                
+                            <h4 style="color: green; font-weight: bold;"> // Define start point</h4>
+                            Point3d p1 = new Point3d(10, 20, 30);
+                            Point pt1 = workpart.Points.CreatePoint(p1);
+                            builder.StartPointOptions = NXOpen.Features.AssociativeLineBuilder.StartOption.Point;
+                            builder.StartPoint.Value = pt1;
+                
+                            <h4 style="color: green; font-weight: bold;"> // Define end point</h4>
+                            Point3d p2 = new Point3d(20, 40, 60);
+                            Point pt2 = workpart.Points.CreatePoint(p2);
+                            builder.EndPointOptions = NXOpen.Features.AssociativeLineBuilder.EndOption.Point;
+                            builder.EndPoint.Value = pt2;
+                
+                            <h4 style="color: green; font-weight: bold;"> // Create associative line</h4>
+                            NXOpen.NXObject LineObject = builder.Commit();
+                
+                            <h4 style="color: green; font-weight: bold;"> // Close builder</h4>
+                            builder.Destroy();
+                
+                
+                        }
+                    }
+                }
+    
+    
+    
+            </pre>
+    
+    
+    
+    </div>
+
+
+    <br>
+    <pre>
+        The result object created by this code is actually an Associative Line feature, rather than a line. This has advantages,
+        sometimes — the feature appears in the Part Navigator and some forms of editing are easier
+    </pre>
+</body>
+</html>

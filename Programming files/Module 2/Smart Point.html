@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Smart Point</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Point</h1>
+
+    <br>
+
+    <pre>
+
+        In Siemens NX Open, "Smart Points" represent a type of geometric object that denotes specific locations in
+        three-dimensional space within the context of the NX software environment. These points are called "smart" because they
+        are associated with specific references, such as on curves, surfaces, or other geometric entities, allowing for precise
+        positioning.
+        
+        
+        Smart Points provide a way to define and reference points that are constrained or related to specific geometric entities
+        within a part or assembly in NX. They can be associated with various elements like edges, vertices, curves, and
+        surfaces, ensuring that they maintain relationships and adapt when the referenced geometry changes.
+        
+        
+        Smart Points are beneficial in scenarios where the exact location of a point needs to be maintained relative to certain
+        geometric features or references within a design. They're often used in feature-based modeling, where maintaining
+        associations with specific features is essential for design intent and parametric changes.
+
+
+    </pre>
+
+    <br>
+
+    <h2>Example Code</h2>
+
+    <div class="Block">
+        <pre>
+
+            using NXOpen;
+            
+            namespace Point
+            {
+                public class SmartPoint
+                {
+                    public static void Main(string[] args)
+                    {
+
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+                        ListingWindow lw = theSession.ListingWindow;
+                        
+                        Point3d Location = new Point3d(10, 10, 10);
+                        NXOpen.Point point = workPart.Points.CreatePoint(Location);
+                        point.SetVisibility(SmartObject.VisibilityOption.Visible);
+                        
+                        
+                        
+                        // Write X, Y, Z values to information windows
+                        
+                        lw.Open(); // Open information window
+                        
+                        lw.WriteLine(point.Coordinates.X.ToString());
+                        lw.WriteLine(point.Coordinates.Y.ToString());
+                        lw.WriteLine(point.Coordinates.Z.ToString());
+                        
+                        // Move point to layer 61
+                        
+                        point.Layer = 61;
+                        point.Color = 126;
+                        
+                        lw.Close(); // Close information window
+                     
+                    
+                    }
+                    
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;     
+                    }
+               
+                }
+           
+            }
+
+        </pre>
+    </div>
+    
+
+</body>
+</html>

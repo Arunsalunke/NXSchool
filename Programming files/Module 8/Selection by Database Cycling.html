@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Selection by Database Cycling</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Selection by Database Cycling</h1>
+
+    <pre>Another way to “select” objects is to gather them while cycling through an NX part file. In this case, the selection is done by your code, rather than by the user, but some of the ideas are somewhat similar.</pre>
+
+    <br>
+
+    <h3>Body Collection</h3>
+
+
+    <div class="Block">
+
+        <pre>
+            using NXOpen;
+            namespace DatabaseCycling
+            {
+                public class Database_Cycling
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part WorkPart = theSession.Parts.Work;
+            
+                        foreach (NXOpen.Body bdy in WorkPart.Bodies)
+                        {
+                            bdy.Blank();
+                        }
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return 1;
+                    }
+                }
+            }
+        </pre>
+
+    </div>
+    
+    <br>
+
+    <h3>Curve Collection</h3>
+
+    <div class="Block">
+
+        <pre>
+            using NXOpen;
+            namespace CurveCollection
+
+            {
+                public class CUrve_Collection
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part WorkPart = theSession.Parts.Work;
+                        int numberOfCurves = 0;
+                        double CurveLength;
+                        ListingWindow lw = theSession.ListingWindow;
+                        lw.Open();
+            
+                        foreach(NXOpen.Curve curve in WorkPart.Curves)
+                        {
+                            numberOfCurves++;
+                            CurveLength = curve.GetLength();
+                            lw.WriteLine(CurveLength.ToString());
+                        }
+            
+                        lw.WriteLine(numberOfCurves.ToString());
+                        lw.Close();
+                      
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+            
+            
+
+        </pre>
+    </div>
+
+
+</body>
+</html>

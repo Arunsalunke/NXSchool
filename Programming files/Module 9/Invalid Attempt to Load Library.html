@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Load Library</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Invalid Attempt to load Library</h1>
+
+    <pre>
+        <b>1. Check Library Paths:</b>
+        
+        Ensure that the path to the DLL or shared library you are trying to load is correct. Verify that the file exists in the
+        specified location.
+
+        <b>2. Library Compatibility:</b>
+        
+        Make sure that the version of the library you are trying to load is compatible with the version of NXOpen and Siemens NX
+        that you are using. Incompatibilities can lead to loading errors.
+
+        <b>3. Dependencies:</b>
+        
+        Check for any dependencies that the library might have. Ensure that all required dependencies are available and
+        correctly configured on your system.
+
+        <b>4. Environment Variables:</b>
+        
+        Verify that any required environment variables, such as PATH or LD_LIBRARY_PATH, are set correctly to include the
+        directories containing the necessary libraries.
+
+        <b>5. Check for Typos:</b>
+         
+        Double-check your code for any typographical errors in the library names or paths. Even a small mistake can lead to
+        loading failures.
+
+        <b>6. Library Loading Sequence:</b>
+        
+        Pay attention to the sequence in which libraries are being loaded. Sometimes, the order of loading libraries matters,
+        especially if there are dependencies between them.
+
+        <b>7. Use Dependency Walker:</b>
+        
+        Use a tool like Dependency Walker (for Windows) or ldd (for Linux) to check the dependencies of your DLL or shared
+        library. This can help identify missing dependencies.
+        
+        <b>8. Logging:</b>
+        
+        Enable logging for NXOpen and examine the log files for any additional information or error messages related to the
+        library loading issue.
+
+        <b>9. Rebuild the Library:</b>
+        
+        If you have access to the source code of the library, consider rebuilding it to ensure compatibility with your current
+        environment.
+
+        <b>10. Update Siemens NX and NXOpen:</b>
+        
+        Ensure that you are using the latest version of Siemens NX and NXOpen. Updates may include fixes for known issues
+        related to library loading.
+
+        <b>11. Consult Siemens Support:</b>
+        
+        If the issue persists, consider reaching out to Siemens Support. Provide them with details about the error, including
+        the log files, and seek assistance in resolving the problem.
+    </pre>
+
+</body>
+</html>

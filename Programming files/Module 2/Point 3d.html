@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Point 3d</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+
+<body>
+    <br>
+    
+    <h1>Point 3d Object</h1>
+
+    <br>
+
+    <pre>
+        In the context of Siemens NX (formerly Unigraphics or UG), Point3D objects are used to represent points in a
+        three-dimensional space within the NX Open API.
+
+        The Point3D class represents a point in 3D space and is part of the NX Open namespace. It contains X, Y, and Z
+        coordinates to define a point's position.
+    </pre>
+
+
+    <h2>Example</h2>
+
+    <div class="Block">
+        <pre>
+            using NXOpen;
+            
+            namespace Point_3d
+            {
+                public class Point_3d
+                 {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+                        ListingWindow lw = theSession.ListingWindow;
+                        
+                        Point3d p1 = new Point3d(10, 20, 30);
+                        
+                       <h5 style="color: green; font-size: medium;">// other way</h5> 
+
+                        Point3d p2 = new Point3d();
+                        p2.X = 100;
+                        p2.Y = 104;
+                        p2.Z = 120;
+                   
+                    }
+                    
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                  
+                    }
+           
+                 }
+            }
+        </pre>
+    </div>
+
+    <br>
+    <pre>
+        The above code shows the creation of a Point3D object with coordinates (10.0, 20.0, 30.0). It demonstrates how to access
+        and manipulate the coordinates of the point.
+
+        In NX Open, these Point3D objects are commonly used when dealing with geometric entities such as curves, surfaces, or
+        bodies to specify positions, directions, or locations for various operations or transformations within the software.
+
+       <span style="font-weight: bold;"> Note that a Point3d is not a real NX object. </span> Point3d objects only exist in your NX Open program — they are not stored
+        permanently in your NX model (or anywhere else). So, as soon as your program has finished running, all your Point3d
+        objects are gone. In this sense, they are just like the numerical variables that you use in your programs. If you want
+        to create a permanent NX object to record a location.
+
+    </pre>
+</body>
+</html>

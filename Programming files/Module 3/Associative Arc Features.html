@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Associative Arc Feature</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block {
+        overflow: scroll;
+        height: 300px;
+        background-color: lemonchiffon;
+        width: 1000px;
+        font-size: large;
+
+    }
+</style>
+
+<body>
+    <br>
+
+    <h1>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <meta charset="UTF-8">
+            <meta name="description" content="Nx open Tutorial">
+            <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+            <meta name="author" content="Arun">
+
+            <title>Objects and Tags</title>
+        </head>
+
+        <style>
+            p {
+                font-size: 20px;
+                font-family: arial;
+                margin-top: 3px;
+                margin-bottom: 3px;
+            }
+
+            h3 {
+                font-weight: bold;
+                font-size: 20px;
+                margin-bottom: 2px;
+                font-family: arial;
+                margin-top: 3px;
+            }
+
+            pre {
+                font-size: 15px;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                ;
+                margin-top: 3px;
+                margin-bottom: 3px;
+            }
+
+            .Block {
+                overflow: scroll;
+                height: 500px;
+                background-color: lemonchiffon;
+                width: 1000px;
+                font-size: large;
+
+            }
+        </style>
+
+        <body>   
+            <h1>Associative Arc Features</h1>
+            <br>
+        
+            <pre>
+                The code in the previous section creates plain ordinary arc objects that are not associative. These are perfectly
+                adequate for many applications, and are easy to create, but there may be situations where you want to create an
+                associative arc, instead. To do this, you should use the AssociativeArcBuilder class. Code that uses this class will be
+                produced if you record the creation of an arc using Insert  Curve  Arc. The recorded code may be rather long, but the
+                essential parts are as follows:
+            </pre>
+
+            <h2>NXopen Code: </h2>
+
+    <div class="Block">
+
+
+        <pre>
+                    using NXOpen;
+                    namespace Associative_Arc_Features
+                    {
+                        public class AssociativeArcFeatures
+                        {
+                    
+                            public static void Main(string[] args)
+                            {
+                                Session theSession = Session.GetSession();
+                                Part workPart = theSession.Parts.Work;
+                                NXOpen.Features.AssociativeArc newArc = null;
+                                NXOpen.Features.AssociativeArcBuilder builder = workPart.BaseFeatures.CreateAssociativeArcBuilder(newArc);
+                                builder.Associative = true;
+                    
+                                builder.Type = NXOpen.Features.AssociativeArcBuilder.Types.ArcFromCenter;
+                    
+                                Point3d CenterPointPt = new Point3d(11, 22, 0);
+                                NXOpen.Point CenterPoint = workPart.Points.CreatePoint(CenterPointPt);
+                                builder.CenterPoint.Value = CenterPoint;
+                    
+                                builder.EndPointOptions = NXOpen.Features.AssociativeArcBuilder.EndOption.Radius;
+                                builder.Radius.RightHandSide = "7.89";
+                    
+                                builder.Limits.StartLimit.LimitOption = NXOpen.GeometricUtilities.CurveExtendData.LimitOptions.Value;
+                                builder.Limits.EndLimit.LimitOption = NXOpen.GeometricUtilities.CurveExtendData.LimitOptions.Value;
+                    
+                                builder.Limits.StartLimit.Distance.RightHandSide = "22.2";
+                                builder.Limits.EndLimit.Distance.RightHandSide = "55.5";
+                    
+                                NXOpen.Features.AssociativeArc myarcFeature =(NXOpen.Features.AssociativeArc) builder.Commit();
+                                builder.Destroy();
+                     
+                            }
+                    
+                            public static int GetUnloadOption(string args)
+                            {
+                                return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                            }
+                        }
+                    }
+       
+                </pre>
+    </div>
+
+
+
+    <br>
+
+    <pre>
+        The last line of code gets an ordinary <span style="color: green;">NXOpen.Arc</span> object from the <span style="color: green;">AssociativeArc</span> feature, which may or may not be
+        necessary, depending on your application.
+
+        An <span style="color: green;">AssociativeArcBuilder</span> object has a large number of properties — around 30 of them, in all. The best way to understand
+        what they all mean is to look at the dialog for creating an arc in interactive NX. For example, we defined the start and
+        end angles of the arc using two expressions that give the angular limits in degrees. If you edit the arc we created, you
+        will see these expressions near the bottom of the edit dialog:
+    </pre>
+        </body>
+
+        </html>
+    </h3>
+
+</body>
+
+</html>

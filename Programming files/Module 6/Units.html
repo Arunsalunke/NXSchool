@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Units</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Units</h1>
+
+    <pre>
+        The parameters of features are typically described by expressions, as discussed below. But expressions involve units, so
+        first we have to understand units.
+        
+        In each part file, there is a UnitCollection, which has an associated collection of “measures”. Typical measures are
+        things like length, volume, mass, angle, or velocity. These are also called Dimensionality in the NX docs. Then each
+        measure has an associated collection of units, which are objects of type NXOpen.Unit. Among these units, one particular
+        one is singled out as the BaseUnit for that measure. For example, in a metric part, the Base Unit for the measure
+        “Length” will be millimeters; this is the length unit that is actually used for representing objects in the part file.
+        Typically, we obtain the measures and units for the UnitCollection of the work part using code like this:
+
+    </pre>
+
+    <div class="Block">
+
+        <pre>
+            using NXOpen;
+
+            namespace Units
+
+            {
+                public class Class1
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part WorkPart = theSession.Parts.Work;
+            
+                        <b style="color: green;"> //Get the UnitCollection of the work part </b>
+                        NXOpen.UnitCollection unitCollection = WorkPart.UnitCollection;
+            
+                        <b style="color: green;"> //Get the measures of this UnitCollection -- "Length", "Area”, "Mass", etc.</b>
+                        string[] GetMeasureTypes = unitCollection.GetMeasures();
+            
+                        <b style="color: green;"> //Get the available units for the measure "Length"</b>
+                        NXOpen.Unit[] Units = unitCollection.GetMeasureTypes("Length");
+            
+                        <b style="color: green;">//Get the base unit for the measure "Length"</b>
+                        NXOpen.Unit BaseUnit = unitCollection.GetBase("Length");
+
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return 1;
+                    }
+                }
+            }
+            
+        </pre>
+
+    </div>
+
+    <br>
+
+    <pre>Some of the Measures are listed here..</pre>
+
+    <img src="../Images/Units.png" style="background-color: burlywood; color: blueviolet;">
+
+</body>
+
+</html>

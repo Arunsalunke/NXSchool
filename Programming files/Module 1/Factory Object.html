@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Factory Object</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+
+</style>
+
+<body>
+    <br>
+
+    <h1>Factory Objects</h1>
+
+    <pre>
+
+        In Siemens NX and NX Open, "factory objects" refer to objects that are responsible for creating or instantiating
+        different types of elements within the software environment. These objects act as factories or builders for various
+        components or functionalities available in NX.
+
+        Factory objects in NX Open are typically used to create or generate instances of specific types of objects or entities,
+        such as parts, features, bodies, sketches, curves, annotations, and more. They serve as a mechanism to produce these
+        entities within the NX environment.
+
+        For instance, if you want to create a new part, a factory object will be responsible for generating an instance of that
+        part. Similarly, if you wish to add a feature like a hole or a fillet to a part, the corresponding feature factory
+        object will be used to create that feature.
+
+        The use of factory objects simplifies the process of creating or accessing different elements within NX by providing a
+        consistent and standardized way to generate these entities. It often involves specific methods or functions within the
+        NX Open API that are associated with these factory objects for creating, modifying, or obtaining various components or
+        functionalities.
+
+        By leveraging factory objects, users working with the NX Open API can efficiently create and manipulate elements within
+        the Siemens NX environment, streamlining the process of generating parts, features, sketches, and other design elements.
+        These factory objects play a significant role in facilitating the creation and manipulation of different entities or
+        components within the software.
+
+    </pre>
+
+    <br>
+
+    <h2>Factory object definition</h2>
+<br>
+
+    <pre>
+
+        In NX Open, an object is usually not created by calling a constructor function. Instead, you use a “create” function that
+        is a member function of some “factory” object. The “factory” concept is well-known in the software engineering field —
+        just as in real life, a factory is a place where you produce new items. Different types of objects use different types
+        of factories. Typically, you can get a suitable factory object from an NX Open.Part object (usually the work part), or
+        from an NXOpen.Session object. So, suppose for example, that we want to create a point in a part named myPart. The
+        relevant factory object is a PointCollection object called myPart.Points.
+    </pre>
+
+    <br>
+
+    <pre style="font-weight: bold;">Refer below table for examples of factory objects</pre>
+
+    <br>
+
+    <img src="../Images/Factory Objects.png" width="700">
+
+    <br>
+
+    <h3>Example</h3>
+
+    <br>
+
+
+    <div class="Block">
+        <pre>
+            public static void Main(string[] args)
+            {
+                Session thesession = Session.GetSession();
+                Part Workpart = thesession.Parts.Work;
+                ListingWindow lw = thesession.ListingWindow;
+                Pointcollection myPart = Workpart.Points;
+                foreach (Point item in myPart)
+                {
+                    lw.WriteLine(item.JournalIdentifier);             
+                }      
+            }
+            
+            public static int GetUnloadOption(string args)
+            {
+                return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+            
+            }
+        </pre>
+    </div>
+    <br>
+
+
+
+
+    <pre>
+        Sometimes the factory object provides functions for directly creating objects, as in the example above. Other times, the
+        factory object provides functions for creating “builder” objects, instead, as discussed in the next section. The
+        following table shows some common examples of factory objects, how you obtain instances of these factory objects, and
+        what sorts of creation functions they provide:
+    </pre>
+</body>

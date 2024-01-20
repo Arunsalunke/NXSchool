@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Views</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+   
+    <h1>Views and it's properties</h1>
+    <br>
+
+    <pre>
+                In NX (Unigraphics NX), view properties refer to the settings and characteristics associated with the different views
+                you create on a drawing sheet. These properties allow you to control the appearance and behavior of the views, ensuring
+                that they convey the necessary information accurately. Here are some key aspects of view properties in UG NX:
+                
+                <b>View Scale: </b>
+                The scale of a view determines the size at which the 3D model is represented on the drawing sheet. You can set the scale
+                based on factors such as the level of detail required and the available space on the sheet.
+                
+                <b>View Display:</b>
+                UG NX provides options for displaying or hiding certain elements within a view. This includes features like hidden
+                lines, tangent edges, and other visibility settings that help communicate the design intent effectively.
+                
+                <b>View Type:</b>
+                Different types of views, such as orthographic, isometric, and detailed views, can be created in UG NX. Each view type
+                has specific properties and settings that you can customize based on your drawing requirements.
+                
+                <b>Section Views:</b>
+                If you create section views to show internal details of a part, you can adjust properties such as the cutting plane,
+                section depth, and hatching style. This helps in clearly presenting the sectional information.
+                
+                <b>Detail Views:</b>
+                Detail views focus on specific areas of the drawing at an enlarged scale. You can customize properties such as the
+                detail view scale factor and the appearance of the detail boundary.
+                
+                <b>Projected Views:</b>
+                Projected views are additional views created from existing views. You can control properties like the projection
+                direction and the alignment of projected views.
+                
+                <b>View Labels and Annotations:</b>
+                UG NX allows you to add labels and annotations to views, providing information such as view names, scale, and other
+                relevant details. These annotations can be customized based on your drafting standards.
+                
+                <b>View Alignment and Arrangement:</b>
+                You can control the alignment and arrangement of views on the drawing sheet. UG NX provides tools to organize views in a
+                logical and readable manner.
+                
+                <b>Associativity:</b>
+                Views in UG NX are typically associative to the 3D model. This means that if the 3D model is updated, the associated
+                views on the drawing sheet can be automatically updated to reflect the changes.
+                Accessing and modifying view properties in UG NX is typically done through the drafting environment. You can select a
+                view, right-click, and access the properties dialog or use specific drafting commands to customize view settings.
+        
+                    </pre>
+
+
+        <h2>Nx Code</h2>
+
+        <pre>
+            using NXOpen;
+
+            namespace Views
+
+            {
+                public class view
+                {
+                   public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+            
+                        NXOpen.Drawings.DrawingSheet DwgSheet = workPart.DrawingSheets.CurrentDrawingSheet;
+                        NXOpen.View[] Views = DwgSheet.GetDraftingViews();
+            
+                        foreach(NXOpen.View sView in Views)
+                        {
+                            sView.SetScale(10.0);  <b style="color: green;">// Change scale of all views to 2:1</b>
+                              
+                        }
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+
+        </pre>
+</body>
+</html>

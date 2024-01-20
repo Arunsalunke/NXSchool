@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>NX Object and Properties</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Nx Object</h1>
+    <br>
+
+    <pre>
+        The objects in the NXOpen namespace have a rich set of properties that let us get information about the objects and (in
+        some cases) modify them. The complete properties of each object are documented in the NX Open Reference Guide, so the
+        overview provided here is just to help you understand the basic concepts.
+    </pre>
+
+    <br>
+
+    <h2>Nx Object Properties</h2>
+    <pre>
+        Most objects in the NX Open object hierarchy inherit from NXOpen.NXObject, so its properties are very important because
+        they trickle down to all the lower-level objects. The properties can be divided into several categories, as outlined
+        below:
+    </pre>
+
+    <h2>Type and Subtype Properties</h2>
+    <pre>
+        Each NX Open object has a Type property and a Subtype property, which you will often use to make decisions about how to
+        process the object. Some objects such as solid geometry objects have an additional SolidBodyType property. These
+        properties are read-only, of course — you cannot change the type of an object.
+    </pre>
+
+    <br>
+
+    <img src="../Images/Object Properties.png">
+
+    <br>
+
+    <pre>
+        Suppose the user has selected an object, for example. You might want to test whether this object is an ellipse before
+        processing it.
+    </pre>
+
+    <h3>Example Code:</h3>
+
+    <br>
+
+    <div class="Block">
+        <pre>
+            using NXOpen;
+            using NXOpen.UF;
+
+            namespace ObjectProperties
+
+            {
+                public class Class1
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part WorkPart = theSession.Parts.Work;
+                        UFSession ufs = UFSession.GetUFSession();
+            
+                        int type;
+                        int subType;
+            
+                        foreach(Curve crv in WorkPart.Curves)
+                        {
+                            ufs.Obj.AskTypeAndSubtype(crv.Tag, out type, out subType);
+            
+                            if(type==UFConstants.UF_cone_type && subType==UFConstants.UF_conic_ellipse_subtype)
+                            {
+                                <b style="color: green;">// Do something</b>
+                                crv.Color = 127;
+                                crv.RedisplayObject();
+                            }
+                        }
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+            
+        </pre>
+    </div>
+    
+</body>
+</html>

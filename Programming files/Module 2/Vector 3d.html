@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Vector 3d</title>
+
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;  
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Vector 3d</h1>
+
+    <br>
+
+    <pre>
+        In the context of computer graphics, mathematics, and 3D modeling, a Vector3D (or Vector3) represents a mathematical
+        entity used to describe a direction and magnitude in a three-dimensional space. It's a fundamental concept in computer
+        graphics, physics, and engineering, often used to represent translations, rotations, forces, velocities, and more.
+        
+        Vectors play a crucial role in 3D graphics, where they can represent translation, orientation, scaling, and other
+        transformations of objects. They also find applications in physics simulations for modeling forces, velocities, and
+        accelerations.
+
+        Depending on the specific implementation or library, the methods and operations might differ, but the basic idea of a
+        Vector3D remains consistent: a representation of a directed line segment in three-dimensional space with an x, y, and z
+        component.
+        
+        <br>
+
+        <img src="../Images/Vector.png">
+
+        <br>
+        
+        The Vector3d class allows you to create vectors in a three-dimensional space, access their components (X, Y, Z), perform
+        operations like obtaining the vector's magnitude, scaling the vector by a scalar value, and other vector-related
+        calculations.
+
+        These vectors are often used in NX Open for defining directions, orientations, translations, or other geometric
+        operations within the NX software, especially when dealing with design, simulations, and manufacturing processes. The
+        methods and operations may vary based on the specific version of NX or programming context but retain the fundamental
+        idea of representing a vector in a three-dimensional space.
+
+          <span style="font-weight: bold;">   "Vector3d object represents a direction or a displacement in 3D space. Like Point3d objects, Vector3d objects only
+            exist in your NX Open program — they are not stored permanently in your NX model (or anywhere else). You can use the
+            following constructor function to create Vector3d objects:"</span> 
+
+    </pre>
+
+    <diV class="Block">
+        <pre>
+            using NXOpen;
+            
+            namespace Vector_3d
+            {
+
+                public class Vector_3d
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+                        ListingWindow lw = theSession.ListingWindow;             
+                        Vector3d v1 = new Vector3d(15, 100, 20.5); // x,y,z                       
+                        <h4 style="color: green; font-weight: bold;">// Other way</h4>
+
+                        Vector3d v2 = new Vector3d();
+                        v2.X = 25;
+                        v2.Y = 54;
+                        v2.Z = 45;
+                               
+                    }
+                    
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                   
+                    }
+               
+                }
+            }
+        </pre>
+    </diV>
+
+</body>
+
+</html>

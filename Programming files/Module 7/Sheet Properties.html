@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Sheet Properties</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Sheet Properties</h1>
+
+    <h2>Sheet Has Following Properties</h2>
+
+    <pre>
+            
+        You can set the size and orientation of the sheet, specifying dimensions such as width and height. Common sheet sizes
+        include A4, A3, and ANSI sizes (like ANSI A, B, C, and D).
+
+       <b>Title Block:</b> 
+        
+        The title block is an important part of a drawing sheet. It usually contains information such as the title of the
+        drawing, part number, revision, date, and other project-related details. In UG NX, you can customize and place title
+        blocks on the sheet.
+
+        <b>Scale:</b>
+        
+        The scale of the drawing on the sheet can be adjusted based on the level of detail required and the size of the sheet.
+        UG NX allows you to set the scale to ensure that the drawing fits appropriately on the sheet.
+
+        <b>Border and Frame:</b>
+        
+        Sheets often have borders and frames that define the drawing area. UG NX provides tools to customize and place borders
+        and frames on the sheet.
+
+        <b>Sheet Layers:</b>
+        
+        UG NX allows you to work with layers on the drawing sheets. Layers help you organize and manage different elements of
+        the drawing, such as dimensions, annotations, and views. You can control the visibility and properties of each layer.
+
+       <b>Properties for Views and Annotations:</b> 
+        
+        When creating views and adding annotations on the sheet, you can set various properties such as line styles, text
+        styles, and dimension styles. This ensures consistency and adherence to drafting standards.
+
+        <b>Sheet Properties Dialog:</b>
+        
+        The Sheet Properties dialog in UG NX consolidates many of these settings in one place. You can access this dialog to
+        modify and configure the properties of the current sheet.
+
+    </pre>
+
+    <h2>Refer below two function to insert sheet into drafting</h2>
+
+    <pre style="color: red;">
+
+     1.   public DrawingSheet InsertSheet(string drawingName, DrawingSheet.Unit drawingUnits, double width, double height, double numerator, double denominator, DrawingSheet.ProjectionAngleType projectionAngle);
+        
+     <p style="font-size: medium; color: green;" >
+        //
+        // Summary:
+        //     Inserts a sheet into a part.
+        //
+        // Parameters:
+        //   drawingName:
+        //     Drawing name
+        //
+        //   sheetSize:
+        //     Sheet Size
+        //
+        //   numerator:
+        //     Numerator of the scale of drawing
+        //
+        //   denominator:
+        //     Denominator of the scale of drawing
+        //
+        //   projectionAngle:
+        //     Projection angle
+        //
+     </p>
+       
+     2.   public DrawingSheet InsertSheet(string drawingName, DrawingSheet.StandardSheetSize sheetSize, double numerator, double denominator, DrawingSheet.ProjectionAngleType projectionAngle);
+
+    </pre>
+
+</body>
+</html>

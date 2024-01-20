@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Nxopen Line</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h3>Definiation of Line</h3>
+    <br>
+    <pre>
+        In geometry, a line is a straight path that extends indefinitely in both directions. It is one of the fundamental
+        objects in geometry and is often described using various properties. Here are some key concepts related to line
+        geometry:
+
+        1. <b>Definition:</b> A line is a set of points that extends infinitely in both directions. It has no thickness or width.
+
+        2. <b>Representation:</b> A line can be represented by a straight-line segment with two endpoints. Alternatively, it can be
+        represented algebraically using equations, such as the slope-intercept form y=mx+b in a Cartesian coordinate system.
+
+
+        3. <b>Length:</b> A line theoretically has infinite length. However, in practical geometric problems, we often work with line
+        segments, which are finite portions of lines with two endpoints.
+
+        4. <b>Slope:</b> The slope of a line measures its steepness and is defined as the ratio of the vertical change to the
+        horizontal change between two points on the line. In the equation y=mx+b, m represents the slope.
+
+        5. <b>Equation of a Line:</b> In a Cartesian coordinate system, a line can be represented by various equations, such as the
+        slope-intercept form mentioned above or the point-slope form (y−y1)=m(x−x1), where (x1,y1) is a point on the line.
+
+        6. <b>Parallel and Perpendicular Lines:</b> Lines that have the same slope are parallel, while lines that intersect at right
+        angles have slopes that are negative reciprocals of each other and are perpendicular.
+
+        7. <b>Distance between a Point and a Line:</b> The distance from a point to a line is the perpendicular distance from the point
+        to the line.
+
+        Lines play a crucial role in geometry and mathematics, serving as the foundation for many other geometric shapes and
+        concepts. They are also important in various scientific and engineering applications, such as computer graphics,
+        computer-aided design (CAD), and physics.
+
+    </pre>
+
+    <h4>NXopen Line Code: </h4>
+
+    <div class="Block">
+        <pre>
+            using NXOpen;
+
+            namespace Line
+            {
+                public class LineCode
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+                        Point3d p1 = new Point3d(0, 0, 0);
+                        Point3d p2 = new Point3d(10, 10, 10);
+            
+                        NXOpen.Line newLine = workPart.Curves.CreateLine(p1, p2);
+                        newLine.SetVisibility(SmartObject.VisibilityOption.Visible);
+            
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+        </pre>
+    </div>
+</body>
+</html>

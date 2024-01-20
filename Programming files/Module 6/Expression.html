@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Expression</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 700px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Expression</h1>
+
+    <pre>
+        Expressions are used to establish relationships between different geometric elements or features in a 3D model. They are
+        a powerful tool for creating parametric designs, where changes to one part of the model can automatically propagate to
+        other related elements.
+        
+       <b>Here are some key points about expressions in Siemens NX:</b> 
+        
+        <b>Parameter Definition:</b> Expressions are often used to define parameters such as dimensions, distances, angles, and other
+        geometric or engineering properties. These parameters can be assigned values or can be linked to other expressions,
+        creating a network of relationships.
+        
+        <b>Parametric Modeling:</b> Siemens NX is known for its parametric modeling capabilities. With expressions, you can create
+        models that adapt to changes dynamically. For example, if you have an expression defining the width of a part, you can
+        easily change that width by modifying the expression, and the entire model updates accordingly.
+        
+        <b>Equations and Constraints:</b> Expressions can involve mathematical equations and constraints. You can use them to set up
+        conditions or rules that govern the behavior of your model. This is particularly useful in ensuring that your design
+        adheres to specific requirements or standards.
+        
+        <b>Driving Dimensions:</b> Expressions are often used to drive dimensions. Instead of specifying a fixed numerical value for a
+        dimension, you can use an expression to make that dimension dependent on other parameters, making your design more
+        flexible and adaptable.
+        
+        <b>Editing and Updating:</b> If you need to make changes to your design, you can modify the expressions, and the entire model
+        will update accordingly. This is a key feature for maintaining design intent and making iterative changes efficiently.
+    </pre>
+
+    <br>
+
+    <h2>NxOpen Expression Class</h2>
+    <pre>All of these various elements of an expression can be controlled using NX Open functions, as follows:</pre>
+
+    <img src="../Images/Expressions.png">
+
+    <br>
+
+    <h2>Sample Code</h2>
+
+    <div class="Block">
+
+       <pre>
+
+        using NXOpen;
+
+        namespace Expression
+
+        {
+            public class NewExpression
+            {
+                public static void Main(string[] args)
+                {
+                    Session theSession = Session.GetSession();
+                    Part workPart = theSession.Parts.Work;
+                    ListingWindow lw = theSession.ListingWindow;
+        
+                    NXOpen.ExpressionCollection ExpCollection = workPart.Expressions;
+        
+                    foreach(NXOpen.Expression exp in ExpCollection)
+                    {
+                        lw.WriteLine(exp.Name);
+                        lw.WriteLine(exp.Description);
+                        lw.WriteLine(exp.GetDescriptor());
+                        lw.WriteLine(exp.Value.ToString());
+                        lw.WriteLine(exp.RightHandSide.ToString());
+                        lw.WriteLine(exp.Type);
+                        lw.WriteLine(exp.Units.ToString());
+        
+                    }
+        
+                }
+        
+                public static int GetUnloadOption(string args)
+                {
+                    return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                }
+            }
+        }
+
+       </pre>
+
+    </div>
+
+</body>
+</html>

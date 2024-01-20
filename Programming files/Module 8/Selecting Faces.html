@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Selecting Faces</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 300px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Face Selection</h1>
+
+    <br>
+
+    <h2>Example of code to select Face</h2>
+
+    <pre>
+        using NXOpen;
+
+        namespace FaceSelection
+
+        {
+            public class Class1
+            {
+        
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part workPart = theSession.Parts.Work;
+        
+                        UI theUI = UI.GetUI();
+        
+                        string Mesg = "Select Body";
+                        string Title = "Body Selection";
+                        bool includeFeature = false;
+                        bool keepHighligh = false;
+                        TaggedObject SelectedObject;
+                        Point3d point = new Point3d();
+        
+                       <b style="color: red;">Selection.SelectionType[] SelectFaces = { Selection.SelectionType.Faces };</b> 
+        
+                        Selection.Response Resp = theUI.SelectionManager.SelectTaggedObject(Mesg, Title,Selection.SelectionScope.AnyInAssembly,keepHighligh,SelectFaces,out SelectedObject, out point);
+        
+                        if (Resp != Selection.Response.Back || Resp != Selection.Response.Cancel) ;
+                        {
+                            if (SelectedObject is NXOpen.Face)
+                            {
+                                Face selectedBody = (NXOpen.Face)SelectedObject; <b style="color: green;">// Convert selected object to Face</b>
+                                selectedBody.Color = 12;
+                                selectedBody.RedisplayObject();
+                            }
+                            else
+                                theUI.NXMessageBox.Show("LogFile", NXMessageBox.DialogType.Information, "Select body");
+                        }
+        
+                    }
+        
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+
+    </pre>
+</body>
+</html>

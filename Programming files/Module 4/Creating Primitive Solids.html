@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Objects and Tags</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+    b
+    {
+        color: green;
+    }
+
+</style>
+
+<body>
+    <br>
+    
+    <h1>Creating Primitive Solids</h1>
+
+    <br>
+
+    <pre>
+        The <b style="color: green;">NXOpen.Features</b> class provides a variety of functions for creating simple solid primitive features (blocks,
+        cylinders, cones, spheres, etc.). As an example, let’s consider the following code that builds a block feature:
+    </pre>
+
+    <br>
+
+    <h3>Block feature builder</h3>
+    <br>
+
+    <div class="Block">
+        <pre>
+
+            using NXOpen;
+            namespace BlockBuilder
+            {
+                public class Block
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part WorkPart = theSession.Parts.Work;
+            
+                        NXOpen.Features.Block newBlock = null;
+                        NXOpen.Features.BlockFeatureBuilder builder = WorkPart.Features.CreateBlockFeatureBuilder(newBlock);
+                        builder.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths;
+                        builder.Origin = new Point3d(0, 0, 0);
+                        builder.SetLength("100");
+                        builder.SetHeight("100");
+                        builder.SetWidth("100");
+                        builder.BooleanOption.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create;
+            
+                        NXOpen.NXObject obj = builder.Commit();
+                        builder.Destroy();
+            
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return 1;
+                    }
+                }
+            }
+
+
+
+        </pre>
+    </div>
+
+    <pre>
+        So, we see that the creation process follows the <b>“builder”</b> pattern that we explained in chapter 5. The general
+        approach  is to,
+       
+        
+        1.<b>Create a “builder” object</b>
+        2.<b>Modify its properties as desired</b>
+        3.<b>“Commit” the builder to create a new feature</b>
+        
+        Functions to create various types of “builder” objects are methods of a FeatureCollection object, and we can get one of
+        these from the workPart.Features property.
+        
+        <b>You can create Block, Cylinder and Cone features using similar techniques.</b> As you would expect, the relevant
+        builder.
+        
+    </pre>
+
+    <img src="../Images/Block Builder.png">
+
+</body>
+
+
+</html>

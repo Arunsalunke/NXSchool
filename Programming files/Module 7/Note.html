@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Nx open Tutorial">
+    <meta name="keywords" content="Nx Open, Nx Customization, Nx Programming">
+    <meta name="author" content="Arun">
+
+    <title>Notes</title>
+</head>
+
+<style>
+    p {
+        font-size: 20px;
+        font-family: arial;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 2px;
+        font-family: arial;
+        margin-top: 3px;
+    }
+
+    pre {
+        font-size: 15px;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        ;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .Block
+    {
+        overflow: scroll;
+        height: 500px;
+        background-color:lemonchiffon;
+        width: 1000px;
+        font-size: large;
+        
+    }
+
+</style>
+
+<body>
+   
+    <h1>Notes</h1>
+    <br>
+    <pre>
+        In UG NX (Unigraphics NX), adding notes is a common practice in the drafting environment to provide additional
+        information or instructions on a drawing. Notes can include textual information, comments, or specifications that help
+        communicate design intent or convey important details. Here's how you can add notes in UG NX:
+        
+        <b>Text Command:</b>
+        To add a note, you can use the "Text" command. This command allows you to place text at a specific location on the
+        drawing sheet. You can access the Text command from the drafting toolbar or menu.
+
+        <b>Text Styles:</b> 
+        UG NX provides options to define and use different text styles for notes. Text styles include parameters such as font
+        type, size, and color. You can set up text styles to ensure consistency throughout the drawing.
+
+        <b>Leader Lines:</b> 
+        When adding notes, you may want to use leader lines to point to specific areas of the drawing or features. UG NX allows
+        you to create leader lines to connect the note to the relevant location.
+
+        <b>Associativity:</b>
+        Notes added in UG NX are often associative, meaning they maintain a link to the drawing. If the drawing is updated or
+        modified, associative notes can be automatically adjusted to reflect the changes.
+
+        <b>Note Properties:</b>
+        After placing a note, you can typically access its properties to make adjustments. This includes modifying the text
+        content, changing the text style, adjusting the position, and setting other properties related to the appearance of the
+        note.
+
+        <b>Note Library:</b>
+        UG NX may have a note library feature, allowing you to save and reuse common notes or annotations. This can be a
+        time-saving feature, especially for notes that are frequently used across different drawings.
+
+        <b>Annotations Toolbar:</b>
+        In the drafting environment, you may find an annotations toolbar that provides quick access to tools for adding various
+        annotations, including notes. Check the toolbar for specific note-related commands.
+
+        <b>Rich Text Format:</b>
+        UG NX may support rich text formatting for notes, allowing you to add bold, italic, or underline formatting to the text.
+        This can be useful for emphasizing certain details in the notes.
+
+        To add a note, you would typically activate the Text command, click on the drawing sheet to specify the insertion point,
+        enter the text content, and adjust any additional properties as needed.
+
+    </pre>
+    <br>
+
+    <h3>Example Code</h3>
+    <br>
+
+    <div class="Block">
+
+         <pre>
+            using NXOpen;
+
+            namespace Note
+            
+            {
+                public class AddNote
+                {
+                    public static void Main(string[] args)
+                    {
+                        Session theSession = Session.GetSession();
+                        Part WorkPart = theSession.Parts.Work;
+            
+                        <b style="color: green;">// two line text</b>
+                        string[] nxNote = { "This is Nx", "Note Programm" };
+                        Point3d Location = new Point3d(50, 50, 0);
+                        NXOpen.Annotations.Note Text = WorkPart.Annotations.CreateNote(nxNote, Location, AxisOrientation.Horizontal, null, null);
+                        Text.Layer = 41;
+            
+                    }
+            
+                    public static int GetUnloadOption(string args)
+                    {
+                        return (int)NXOpen.Session.LibraryUnloadOption.Immediately;
+                    }
+                }
+            }
+
+         </pre>
+
+             
+    </div>
+    <br> 
+    <img src="../Images/Note.png" width="300px"> 
+</body>
+</html>
